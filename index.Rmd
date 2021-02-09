@@ -4,29 +4,72 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    social: menu
+    source_code: https://github.com/akhilanekkanti1/dashboard_demo
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
 ```
 
+Sidebar Title {.sidebar}
+=========================================
+
+**This Dashboard is Important.** 
+
+RMarkdown syntax works here! 
+
+[Click here](https://youtu.be/dQw4w9WgXcQ). 
+
+
+Weird Flex
+=================================
+
+Background Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+
+### Part 1
+
+```{r}
+
+library(tidyverse)
+
+mtcars %>% 
+  ggplot(aes(wt, mpg)) +
+  geom_point() 
+
+```
+
+### Part 2
+
+```{r}
+
+mtcars %>% 
+  ggplot(aes(wt, mpg, col=as_factor(cyl))) +
+  geom_point() +
+  facet_grid(~cyl)
+
+```
+
+
+
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### OH la la, Final Plot
 
 ```{r}
+library(tidyverse)
+mtcars %>% 
+  mutate(cyl = as_factor(cyl)) %>% 
+  ggplot(aes(wt, mpg))+
+  geom_point(aes(color = cyl), size = 3)
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
-
-```{r}
-
-```
+But Okay
+================================
 
 ### Chart C
 
